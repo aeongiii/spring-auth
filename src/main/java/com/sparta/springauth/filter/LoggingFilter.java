@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Slf4j(topic = "LoggingFilter")
-@Component
+//@Component // Spring Security 공부하는 동안 주석처리
+
 @Order(1)
 public class LoggingFilter implements Filter {
     @Override
