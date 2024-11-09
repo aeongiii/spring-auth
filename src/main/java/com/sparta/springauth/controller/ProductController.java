@@ -1,15 +1,16 @@
 package com.sparta.springauth.controller;
 
+import com.sparta.springauth.dto.ProductRequestDto;
 import com.sparta.springauth.entity.User;
 import com.sparta.springauth.entity.UserRoleEnum;
 import com.sparta.springauth.security.UserDetailsImpl;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 //  /api/user로 시작되는 코드들을 검증하는 컨트롤러
 
@@ -38,5 +39,13 @@ public class ProductController {
         }
 
         return "redirect:/";
+    }
+
+
+    // valid 테스트
+    @PostMapping("/validation")
+    @ResponseBody                     // 갖고오기    // requestDto에서 validation 사용을 위한 @Valid
+    public ProductRequestDto testValid(@RequestBody @Valid ProductRequestDto requestDto) {
+        return requestDto;
     }
 }
